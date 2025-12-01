@@ -5,6 +5,8 @@ import ArgumentParser
 struct AdventOfCode: ParsableCommand {
     public static let subcommands: [any DayCommand.Type] = [
         Day0.self,
+        Day1A.self,
+        Day1B.self,
     ]
     
     public static let configuration = CommandConfiguration(subcommands: Self.subcommands)
