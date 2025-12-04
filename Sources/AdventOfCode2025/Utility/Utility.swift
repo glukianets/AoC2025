@@ -2,15 +2,12 @@ import Foundation
 
 extension String: @retroactive Error {}
 
-extension Collection where Index: Strideable {
-    func map<R>(
-        windowOfSize w: Index.Stride,
-        stridingBy s: Index.Stride? = nil,
-        _ transform: (SubSequence) -> R
-    ) -> [R] {
-        stride(from: self.startIndex, to: self.endIndex.advanced(by: 1 - w), by: s ?? w)
-            .map { transform(self[$0..<($0.advanced(by: w))]) }
-    }
+func apply<each T, R, E>(_ value: repeat each T, transform: (repeat each T) throws(E) -> R) throws(E) -> R {
+    try transform(repeat each value)
+}
+
+func apply<each T, R, E>(_ value: repeat each T, transform: (repeat each T) async throws(E) -> R) async throws(E) -> R {
+    try await transform(repeat each value)
 }
 
 extension Optional {
@@ -23,7 +20,6 @@ extension Optional {
         }
     }
 }
-
 
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
