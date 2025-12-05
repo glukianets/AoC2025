@@ -10,7 +10,7 @@ class Day2A: DayCommand, @unchecked Sendable {
     static let pow10: [Int] = (0..<18).reductions(1) { a, e in a * 10 }
 
     func parseInput(_ input: String) throws -> Input {
-        return try input.components(separatedBy: ",")
+        try input.components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
             .map {

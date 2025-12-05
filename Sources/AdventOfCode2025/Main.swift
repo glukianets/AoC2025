@@ -13,6 +13,8 @@ struct AdventOfCode: ParsableCommand {
         Day3B.self,
         Day4A.self,
         Day4B.self,
+        Day5A.self,
+        Day5B.self,
     ]
     
     public static let configuration = CommandConfiguration(subcommands: Self.subcommands)

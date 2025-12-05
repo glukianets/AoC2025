@@ -12,16 +12,14 @@ class Day1A: DayCommand {
             .map { $0.trimmingCharacters(in: .whitespaces) }
             .filter { !$0.isEmpty }
             .map {
-                let isLeft = switch $0.first! {
-                case "L": true
-                case "R": false
-                default: throw "Invalid input: \($0)"
-                }
-                
                 guard let count = Int($0.dropFirst()) else { throw "Invalid input: \($0)" }
                 assert(count != 0)
-                
-                return isLeft ? -count : count
+
+                switch $0.first! {
+                case "L": return -count
+                case "R": return count
+                default: throw "Invalid input: \($0)"
+                }
             }
     }
 

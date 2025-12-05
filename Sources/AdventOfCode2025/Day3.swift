@@ -8,7 +8,7 @@ class Day3A: DayCommand {
     required init() { /**/ }
 
     func parseInput(_ input: String) throws -> Input {
-        return try input.components(separatedBy: .newlines)
+        try input.components(separatedBy: .newlines)
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
             .map { line in
