@@ -13,11 +13,13 @@ func apply<each T, R, E>(_ value: repeat each T, transform: (repeat each T) asyn
 extension Optional {
     var unwrapped: Wrapped {
         get throws {
-            guard case let .some(wrapped) = self else {
-                throw "Failed to unwrap optional of type \(Self.self)"
-            }
-            return wrapped
+            try self.unwrapOr(throw: "Failed to unwrap optional of type \(Self.self)")
         }
+    }
+    
+    func unwrapOr<E>(throw error: E) throws(E) -> Wrapped {
+        guard let self else { throw error }
+        return self
     }
 }
 

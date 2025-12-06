@@ -27,7 +27,7 @@ class Day5A: DayCommand {
             }
             return lower..<upper+1
         }
-        let available = try sections[0].map { line in
+        let available = try sections[1].map { line in
             guard let number = Int(line) else {
                 throw "invalid input: \(line)"
             }

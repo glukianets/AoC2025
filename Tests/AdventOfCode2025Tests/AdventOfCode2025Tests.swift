@@ -11,7 +11,7 @@ final class AdventOfCode2025Tests {
         let rawInput = try testData(fileName: commandName, extension: "input")
             ?? testData(fileName: String(commandName.dropLast(1)), extension: "input")
         
-        let input = rawInput?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let input = rawInput?.trimmingCharacters(in: .newlines)
         
         guard let input else { throw "Input not found for \(commandName)" }
    
