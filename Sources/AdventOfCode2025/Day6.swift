@@ -73,10 +73,6 @@ class Day6B: Day6A {
         
         return columns
     }
-    
-    override func run(_ input: Input) throws -> Output {
-        return try super.run(input)
-    }
 }
 
 private extension Collection where Element: Collection {

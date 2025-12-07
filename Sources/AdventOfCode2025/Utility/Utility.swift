@@ -161,3 +161,39 @@ extension Collection {
         }
     }
 }
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        _read {
+            if indices.contains(index) {
+                yield self[index]
+            } else {
+                yield nil
+            }
+        }
+    }
+}
+
+extension MutableCollection {
+    subscript(safe index: Index) -> Element? {
+        _read {
+            if indices.contains(index) {
+                yield self[index]
+            } else {
+                yield nil
+            }
+        }
+        _modify {
+            if indices.contains(index) {
+                var temp: Element? = self[index]
+                yield &temp
+                if let newValue = temp {
+                    self[index] = newValue
+                }
+            } else {
+                var temp: Element? = nil
+                yield &temp
+            }
+        }
+    }
+}
