@@ -197,3 +197,15 @@ extension MutableCollection {
         }
     }
 }
+
+extension Strideable {
+    mutating func advancing(by n: Stride, returningOldValue: Bool = false) -> Self {
+        self = self.advanced(by: n)
+        return self
+    }
+    
+    mutating func advance(by n: Stride, returningOldValue: Bool = false) -> Self {
+        defer { self = self.advanced(by: n) }
+        return self
+    }
+}
