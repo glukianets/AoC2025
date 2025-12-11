@@ -13,17 +13,17 @@ class Day9A: DayCommand {
     required init() { /**/ }
 
     func parseInput(_ input: String) throws -> Input {
-        let lines = input.split(omittingEmptySubsequences: true) { $0.isWhitespace }
-        let points: [Point] = try lines.map { line in
-            let components = line.split(separator: ",", omittingEmptySubsequences: true)
-            guard
-                components.count == 2,
-                let x = Component(components[0]),
-                let y = Component(components[1])
-            else { throw "invalid line \(line)" }
-            return Point(x, y)
-        }
-        return points
+        try input
+            .split(omittingEmptySubsequences: true) { $0.isWhitespace }
+            .map { line in
+                let components = line.split(separator: ",", omittingEmptySubsequences: true)
+                guard
+                    components.count == 2,
+                    let x = Component(components[0]),
+                    let y = Component(components[1])
+                else { throw "invalid line \(line)" }
+                return Point(x, y)
+            }
     }
     
     func run(_ input: Input) throws -> Output {

@@ -74,14 +74,3 @@ class Day6B: Day6A {
         return columns
     }
 }
-
-private extension Collection where Element: Collection {
-    func transposed() -> [[Element.Element]] {
-        guard let firstRow = self.first else { return [] }
-        return (0..<firstRow.count).map { columnIndex in
-            self.compactMap { row in
-                row.dropFirst(columnIndex).first
-            }
-        }
-    }
-}
