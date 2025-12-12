@@ -11,7 +11,7 @@ class Day11A: DayCommand {
         let regex = /^(?<name>\w+):(?<outputs>(?:\s+\w+)+)\s*$/
         
         let pairs = try input
-            .split(omittingEmptySubsequences: true) { $0.isNewline }
+            .split { $0.isNewline }
             .map {
                 guard let match = $0.wholeMatch(of: regex) else { throw "invalid line: \($0)" }
                 return (match.output.name, match.output.outputs.split(separator: " "))

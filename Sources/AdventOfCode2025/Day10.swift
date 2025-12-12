@@ -19,12 +19,12 @@ class Day10A: DayCommand {
         let regex = /^\[(?<brackets>[.#]+)\](?<parens>(?:\s+\(\d+(?:,\d+)*\))+)\s+\{(?<braces>\d+(?:,\d+)*)\}$/
         
         return try input
-            .split(omittingEmptySubsequences: true) { $0.isNewline }
+            .split { $0.isNewline }
             .map {
                 guard let match = $0.wholeMatch(of: regex) else { throw "invalid line: \($0)" }
                 
                 let state: State = match.output.brackets.map { $0 == "#" }
-                let buttons: Buttons = match.output.parens.split(omittingEmptySubsequences: true) { $0.isWhitespace }
+                let buttons: Buttons = match.output.parens.split { $0.isWhitespace }
                     .map { $0.dropFirst().dropLast().split(separator: ",").map { Int($0)! } }
                 let jolts: Joltage = match.output.braces.split(separator: ",").map { Int($0)! }
                 

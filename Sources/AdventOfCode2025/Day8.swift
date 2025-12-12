@@ -14,9 +14,9 @@ class Day8A: DayCommand {
     required init() { /**/ }
 
     func parseInput(_ input: String) throws -> Input {
-        let lines = input.split(omittingEmptySubsequences: true) { $0.isWhitespace }
+        let lines = input.split { $0.isWhitespace }
         let points: [Point] = try lines.map { line in
-            let components = line.split(separator: ",", omittingEmptySubsequences: true)
+            let components = line.split(separator: ",")
             guard
                 components.count == 3,
                 let x = Component(components[0]),

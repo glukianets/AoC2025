@@ -46,7 +46,7 @@ class Day6A: DayCommand {
 
 class Day6B: Day6A {
     override func parseInput(_ input: String) throws -> Day6A.Input {
-        let lines = input.split(separator: "\n", omittingEmptySubsequences: true)
+        let lines = input.split(separator: "\n")
         
         guard let lastLine = lines.last, lines.count > 1 else { throw "invalid input \(input)" }
         let operators: [(op: Operator, range: Range<Int>)] = try lastLine.matches(of: /(?<operator>[*+])\s+/)

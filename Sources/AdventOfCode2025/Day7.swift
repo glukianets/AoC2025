@@ -8,7 +8,7 @@ class Day7A: DayCommand {
     required init() { /**/ }
 
     func parseInput(_ input: String) throws -> Input {
-        let lines = input.split(omittingEmptySubsequences: true) { $0.isWhitespace }
+        let lines = input.split { $0.isWhitespace }
         guard let firstLine = lines.first, lines.count > 2 else { throw "Invalid input \(lines)" }
         let manifold: [[Bool]] = try lines.dropFirst().map { line in
             try line.map {

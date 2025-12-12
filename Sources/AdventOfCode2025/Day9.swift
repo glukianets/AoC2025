@@ -14,9 +14,9 @@ class Day9A: DayCommand {
 
     func parseInput(_ input: String) throws -> Input {
         try input
-            .split(omittingEmptySubsequences: true) { $0.isWhitespace }
+            .split { $0.isWhitespace }
             .map { line in
-                let components = line.split(separator: ",", omittingEmptySubsequences: true)
+                let components = line.split(separator: ",")
                 guard
                     components.count == 2,
                     let x = Component(components[0]),

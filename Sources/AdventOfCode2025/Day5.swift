@@ -10,7 +10,7 @@ class Day5A: DayCommand {
     func parseInput(_ input: String) throws -> Input {
         let sections = input.components(separatedBy: .newlines)
             .map { $0.trimmingCharacters(in: .whitespaces) }
-            .split(separator: "", maxSplits: 1, omittingEmptySubsequences: true)
+            .split(separator: "", maxSplits: 1)
         
         guard sections.count == 2 else {
             throw "invalid input: \(input)"
